@@ -43,18 +43,17 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         title: const Text('Login'),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 61, 0, 85),
+        backgroundColor: const Color(0xFF7B4C80),
         foregroundColor: Colors.white,
       ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
             colors: [
-              Color(0xFF9B59B6),
-              Color(0xFF7F8C9A),
-              Color(0xFFE87070),
+              Color(0xFF5E6CC2),
+              Color(0xFFF18EB2),
             ],
           ),
         ),
@@ -89,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: double.infinity,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF5D4E6D),
+                        backgroundColor: const Color(0xFF7B4C80),
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
