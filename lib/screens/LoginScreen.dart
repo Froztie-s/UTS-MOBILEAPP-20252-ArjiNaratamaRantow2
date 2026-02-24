@@ -1,9 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:utsmobileapp_arjinaratamarantow/models/productmodel.dart';
 import 'ProductScreen.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  void _onLogin() {
+    if (_usernameController.text.trim().isEmpty ||
+        _passwordController.text.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Please fill in all fields before logging in.',
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Colors.redAccent,
+          behavior: SnackBarBehavior.floating,
+          duration: Duration(seconds: 2),
+        ),
+      );
+      return;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,15 +70,17 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const TextField(
-                    decoration: InputDecoration(
+                  TextField(
+                    controller: _usernameController,
+                    decoration: const InputDecoration(
                       labelText: 'Username',
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const TextField(
+                  TextField(
+                    controller: _passwordController,
                     obscureText: true,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Password',
                     ),
                   ),
@@ -61,14 +95,14 @@ class LoginScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: _onLogin,
                       child: const Text('Login'),
                     ),
                   ),
                   const SizedBox(height: 8),
                   TextButton(
                     onPressed: () {
-                      Navigator.of( context).push(
+                      Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => const ProductScreen(),
                         ),

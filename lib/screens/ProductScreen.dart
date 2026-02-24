@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../data/dummydata.dart';
 import '../widgets/productcard.dart';
+import 'ProfileScreen.dart';
 
 class ProductScreen extends StatelessWidget {
   const ProductScreen({super.key});
@@ -16,7 +17,16 @@ class ProductScreen extends StatelessWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 12),
-            child: const Icon(Icons.local_offer, color: Colors.orange),
+            child: IconButton(
+              icon: const Icon(Icons.account_circle, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const ProfileScreen(),
+                  ),
+                );
+              },
+            ),
           ),
         ],
       ),

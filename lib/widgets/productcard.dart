@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/productmodel.dart';
+import 'buynotification.dart';
 
 class Productcard extends StatelessWidget {
   const Productcard({super.key, required this.product});
@@ -63,30 +64,38 @@ class Productcard extends StatelessWidget {
               ],
             ),
           ),
-          Spacer(),
-          Text(
-            product.productprice,
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 13,
-            ),
-          ),
-          SizedBox(width: 10),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-            decoration: BoxDecoration(
-              color: Color(0xFFFFAA00),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Text(
-              'Buy',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 13,
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                product.productprice,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13,
+                ),
               ),
-            ),
+              SizedBox(height: 4),
+              GestureDetector(
+                onTap: () => showBuyNotification(context, product.productname),
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: Color(0xFFFFAA00),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    'Buy',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 13,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
           SizedBox(width: 12),
         ],
